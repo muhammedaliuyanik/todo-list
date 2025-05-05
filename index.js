@@ -11,14 +11,25 @@ function AddToDoItem(){
     if(todoValue.value){
         let newTask = document.createElement('li');
         let item = document.createTextNode(todoValue.value);
-        item = `<img class="edit todo-controls" onclick="UpdateToDoItem(this)" src="/images/update.png" />
-                <img class="delete todo-controls" onclick="DeleteToDoItem(this)" src="/images/delete.png" />`
-        document.getElementById("todoText").innerHTML = item;
+        newTask.appendChild(item);
+        listItems.appendChild(newTask);
         todoValue.value = "";
+        AddUpdateDeleteItems();
     }
     else{
         alerting.innerText = ("Please enter your todo text!");
     }
+}
+
+function AddUpdateDeleteItems(){
+    let updateItems = document.getElementById("list-items")
+    const updateDeleteItems = 
+    `<li>${todoValue.value}
+    <img class="edit todo-controls" onclick="UpdateToDoItem(this)" src="/images/update.png" />
+    <img class="delete todo-controls" onclick="DeleteToDoItem(this)" src="/images/delete.png" />
+    </li>`
+    updateItems.innerHTML += updateDeleteItems;
+    
 }
 
 function UpdateTodoItem(){
